@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nishant-singhaa0240274.netlify.app/sitemap.xml
