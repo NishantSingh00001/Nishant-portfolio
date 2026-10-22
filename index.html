@@ -253,43 +253,46 @@ a:hover .arrow,button:hover .arrow{transform:translate(2px,-2px)}
 @media (max-width:1080px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.stats{grid-template-columns:1fr}.stat{min-height:0}}
 
-/* ---------- AURA ---------- */
-.aura{padding-block:clamp(100px,16vh,180px) clamp(80px,12vh,140px);background:radial-gradient(70% 45% at 78% 18%,rgba(33,145,140,.16),transparent 70%),var(--night)}
-.aura__head{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:28px 64px;align-items:end;margin-bottom:clamp(40px,8vh,96px)}
-.aura__title{margin:0;font-size:clamp(5.2rem,19vw,17rem);line-height:.8;letter-spacing:-.075em;font-weight:700;overflow:hidden;padding:0 .06em .08em 0}
-.aura__title span{display:inline-block;background-image:var(--grad-d);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
-.aura__intro .lead{margin-top:0}
-.aura__links{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.aura__stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:start}
-.aura__visual{position:sticky;top:calc(var(--nav-h) + 7vh);display:grid;place-items:center;width:100%;max-width:560px;aspect-ratio:1;justify-self:center;text-decoration:none;color:var(--snow);border-radius:50%}
-.rings{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 40px rgba(94,201,98,.18));transition:filter .8s var(--ease)}
-.aura__visual:hover .rings{filter:drop-shadow(0 0 60px rgba(94,201,98,.34))}
-.ring-track{fill:none;stroke-width:40;opacity:.14}
-.ring{fill:none;stroke-width:40;stroke-linecap:round}
-.readout{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none}
-.readout__k{font:.74rem var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--fog)}
-.readout__v{font-size:clamp(2.6rem,5.2vw,4.6rem);font-weight:600;letter-spacing:-.05em;line-height:1.05;font-variant-numeric:tabular-nums}
-.readout__u{font-size:.95rem;color:var(--fog)}
-.aura__steps{list-style:none;margin:0;padding:0;display:grid}
-.step{min-height:74vh;display:flex;flex-direction:column;justify-content:center;padding-block:6vh;transition:opacity .6s var(--ease)}
-.gsap .step{opacity:.28}
-.gsap .step.is-active{opacity:1}
-.step__k{display:flex;align-items:center;gap:.6rem;margin:0;font:.75rem var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--fog)}
-.step__k i{width:10px;height:10px;border-radius:50%;background:var(--c)}
-.step h3{margin:.8rem 0 1rem;font-size:clamp(2rem,3.4vw,3.2rem);line-height:1.02;letter-spacing:-.04em;font-weight:600}
-.step p:last-child{margin:0;color:var(--fog);font-size:clamp(1.05rem,1.3vw,1.2rem);max-width:38ch}
-.aura__foot{margin-top:clamp(40px,6vh,72px);padding-top:26px;border-top:1px solid var(--hair-d);display:flex;justify-content:space-between;align-items:flex-start;gap:20px 48px;flex-wrap:wrap}
-.aura__foot p{margin:0;color:var(--fog);max-width:56ch}
-.aura__foot strong{color:var(--snow);font-weight:500}
+/* ---------- FEATURED (cube) ---------- */
+.feat{padding-block:clamp(100px,16vh,180px) clamp(80px,12vh,140px);background:radial-gradient(70% 45% at 78% 18%,rgba(33,145,140,.16),transparent 70%),var(--night)}
+.feat__head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:28px 64px;align-items:end;margin-bottom:clamp(48px,9vh,110px)}
+.feat__head .lead{margin-top:0}
+.feat__stage{display:grid;place-items:center}
+.cube-scene{perspective:1500px;width:100%;display:grid;place-items:center;--cw:clamp(290px,80vw,480px);--ch:clamp(470px,116vw,520px);--half:calc(var(--cw)/2)}
+.cube{position:relative;transform-style:preserve-3d;transition:transform .95s var(--ease);width:var(--cw);height:var(--ch);transform:rotateX(-6deg)}
+.cube.no-anim{transition:none}
+.face{position:absolute;inset:0;background:linear-gradient(150deg,var(--carbon-2),var(--carbon));border:1px solid var(--hair-d);border-radius:var(--r-lg);padding:clamp(26px,3.6vw,42px);display:flex;flex-direction:column;justify-content:center;backface-visibility:hidden;overflow:hidden}
+.face::before{content:"";position:absolute;inset:0;border-radius:var(--r-lg);pointer-events:none;background:radial-gradient(92% 72% at 86% 8%,color-mix(in srgb,var(--dot,#7ad866) 20%,transparent),transparent 60%)}
+.face>*{position:relative}
+.face--0{transform:translateZ(var(--half))}
+.face--1{transform:rotateY(90deg) translateZ(var(--half))}
+.face--2{transform:rotateY(180deg) translateZ(var(--half))}
+.face--3{transform:rotateY(270deg) translateZ(var(--half))}
+.panel__tag{font:500 .66rem/1 var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:#d2d2d7;border:1px solid var(--hair-d);padding:6px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:7px;align-self:flex-start}
+.panel__tag i{width:7px;height:7px;border-radius:50%;background:var(--dot,#7ad866)}
+.panel__name{font-size:clamp(2.4rem,6.4vw,3.8rem);line-height:.9;letter-spacing:-.05em;font-weight:700;margin:16px 0 0}
+.panel__name span{background-image:var(--grad-d);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.panel__meaning{color:var(--mist);font-family:var(--f-serif);font-style:italic;font-size:1.12rem;letter-spacing:-.01em;margin:10px 0 0}
+.panel__desc{color:var(--fog);margin:16px 0 0;font-size:.99rem;line-height:1.5;max-width:44ch}
+.panel__stack{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:5px 14px;font:.72rem var(--f-mono);color:var(--mist)}
+.panel__links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.cube-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:40px}
+.arrow-btn{appearance:none;width:52px;height:52px;border-radius:50%;border:1px solid var(--hair-d);background:var(--carbon);color:var(--snow);font-size:1.2rem;cursor:pointer;display:grid;place-items:center;transition:background-color .35s,border-color .35s,transform .3s}
+.arrow-btn:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.4)}
+.arrow-btn:active{transform:scale(.94)}
+.dots{display:flex;gap:9px}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.22);border:0;padding:0;cursor:pointer;transition:background-color .35s,transform .3s}
+.dot[aria-current="true"]{background:var(--snow);transform:scale(1.25)}
+.feat__hint{text-align:center;color:var(--mist);font:.8rem/1.4 var(--f-mono);letter-spacing:.04em;margin-top:18px}
 .chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
 .chips li{font:.72rem var(--f-mono);letter-spacing:.04em;padding:6px 11px;border-radius:999px;border:1px solid var(--hair-d);color:#d2d2d7}
 [data-tone=light] .chips li{background:#fff;border-color:var(--hair-l);color:var(--ink-2)}
 @media (max-width:900px){
-  .aura__head{grid-template-columns:1fr}
-  .aura__stage{grid-template-columns:1fr}
-  .aura__visual{position:relative;top:auto;max-width:420px}
-  .step{min-height:0;padding-block:26px;border-top:1px solid var(--hair-d)}
-  .gsap .step{opacity:1}
+  .feat__head{grid-template-columns:1fr}
+}
+@media (max-width:420px){
+  .panel__meaning{display:none}
+  .panel__desc{font-size:.95rem}
 }
 
 /* ---------- work gallery ---------- */
@@ -500,7 +503,7 @@ a:hover .arrow,button:hover .arrow{transform:translate(2px,-2px)}
   <div class="nav__inner">
     <a class="nav__logo" href="#top" aria-label="Nishant Singh, back to top"><span class="nav__mark" aria-hidden="true">NS</span><span class="nav__name">Nishant Singh</span></a>
     <nav class="nav__links" aria-label="Primary">
-      <a href="#aura">AURA</a>
+      <a href="#featured">Featured</a>
       <a href="#work">Projects</a>
       <a href="#experience">Experience</a>
       <a href="#github">GitHub</a>
@@ -521,7 +524,7 @@ a:hover .arrow,button:hover .arrow{transform:translate(2px,-2px)}
 
 <div class="menu" id="menu" hidden>
   <nav class="menu__links" aria-label="Menu">
-    <a href="#aura"><span>AURA</span></a>
+    <a href="#featured"><span>Featured</span></a>
     <a href="#work"><span>Projects</span></a>
     <a href="#experience"><span>Experience</span></a>
     <a href="#github"><span>GitHub</span></a>
@@ -548,7 +551,7 @@ a:hover .arrow,button:hover .arrow{transform:translate(2px,-2px)}
     <div class="hero__foot" data-intro>
       <p class="hero__lede"><strong>AI/ML and software engineer.</strong> I train models, build the apps around them, and ship both.</p>
       <div class="hero__cta">
-        <span class="magnetic"><a class="btn" href="#aura">See my work <span class="arrow" aria-hidden="true">↘</span></a></span>
+        <span class="magnetic"><a class="btn" href="#featured">See my work <span class="arrow" aria-hidden="true">↘</span></a></span>
         <span class="magnetic"><a class="btn btn--ghost" href="https://github.com/NishantSingh00001" target="_blank" rel="noopener">GitHub <span class="arrow" aria-hidden="true">↗</span></a></span>
       </div>
       <dl class="hero__meta">
@@ -565,7 +568,7 @@ a:hover .arrow,button:hover .arrow{transform:translate(2px,-2px)}
 <section class="about" id="about" data-tone="dark">
   <div class="wrap">
     <p class="label" data-reveal>About</p>
-    <p class="manifesto" data-lit>I'm a Computer Engineering graduate from Mumbai who likes the point where <em class="grad">data meets people.</em> At Astreya I built dashboards and automated reports that saved about 25 hours of manual work a month. On my own, I've segmented 10,000+ customers with K-Means, trained a digit classifier to 99.3% accuracy, and built AURA, a wellness app that runs entirely in the browser.</p>
+    <p class="manifesto" data-lit>I'm a Computer Engineering graduate from Mumbai who likes the point where <em class="grad">data meets people.</em> At Astreya I built dashboards and automated reports that saved about 25 hours of manual work a month. On my own, I've segmented 10,000+ customers with K-Means, trained a digit classifier to 99.3% accuracy, and built Tideline, a Flink-style stream processor that runs entirely in the browser.</p>
     <div class="about__cols">
       <div data-reveal><h3>Now</h3><p><strong>Looking for full-time roles</strong> in AI/ML and software engineering, at startups and at larger companies.</p></div>
       <div data-reveal><h3>Education</h3><p><strong>B.E. Computer Engineering</strong>, A.P. Shah Institute of Technology, University of Mumbai, 2022 to 2026.</p></div>
@@ -590,53 +593,72 @@ a:hover .arrow,button:hover .arrow{transform:translate(2px,-2px)}
   </div>
 </section>
 
-<!-- AURA -->
-<section class="aura" id="aura" data-tone="dark">
+<!-- FEATURED -->
+<section class="feat" id="featured" data-tone="dark">
   <div class="wrap">
-    <div class="aura__head">
+    <div class="feat__head">
       <div>
-        <p class="label" data-reveal>Featured project</p>
-        <h2 class="aura__title"><span data-rise>AURA</span></h2>
+        <p class="label" data-reveal>Featured work</p>
+        <h2 class="h1" data-split>Four I'm <em>proudest</em> of.</h2>
       </div>
-      <div class="aura__intro">
-        <p class="lead" data-reveal>A health, fitness and mental-care app that runs in a single browser tab. It's the project I'm proudest of.</p>
-        <div class="aura__links" data-reveal>
-          <span class="magnetic"><a class="btn" href="https://aura-nishant.netlify.app/" target="_blank" rel="noopener">Open live app <span class="arrow" aria-hidden="true">↗</span></a></span>
-          <span class="magnetic"><a class="btn btn--ghost" href="https://github.com/NishantSingh00001/aura-health-fitness" target="_blank" rel="noopener">View code <span class="arrow" aria-hidden="true">↗</span></a></span>
+      <p class="lead" data-reveal>Real-time systems and secure communication: a live stream processor, a zero-trust gateway, a distributed-systems studio and a workbench of AI agents. Turn the cube to each one.</p>
+    </div>
+
+    <div class="feat__stage">
+      <div class="cube-scene">
+        <div class="cube" id="featCube" aria-live="polite">
+          <article class="face face--0" style="--dot:#2fb0a6">
+            <span class="panel__tag"><i></i>Stream processing</span>
+            <h3 class="panel__name"><span>Tideline</span></h3>
+            <p class="panel__meaning">“the mark the sea leaves on the shore”</p>
+            <p class="panel__desc">Apache Flink-style processing on Wikipedia's live edit stream, in the browser — event-time windows, watermarks, a Flink SQL console and exactly-once crash recovery, checked against real Apache Flink.</p>
+            <ul class="panel__stack"><li>TypeScript</li><li>Stream processing</li><li>Flink SQL</li><li>Kafka model</li><li>Watermarks</li></ul>
+            <div class="panel__links">
+              <a class="btn" href="https://tideline-nishant.netlify.app/" target="_blank" rel="noopener">Open live app <span class="arrow" aria-hidden="true">↗</span></a>
+              <a class="btn btn--ghost" href="https://github.com/NishantSingh00001/Tideline" target="_blank" rel="noopener">View code <span class="arrow" aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="face face--1" style="--dot:#9577ee">
+            <span class="panel__tag"><i></i>Zero-trust security</span>
+            <h3 class="panel__name"><span>Tessera</span></h3>
+            <p class="panel__meaning">“the Roman token that proved you belonged”</p>
+            <p class="panel__desc">A working zero-trust access gateway: every request is verified by identity, device, destination and risk, then allowed, challenged or denied — with clearance, DLP and a tamper-evident audit log.</p>
+            <ul class="panel__stack"><li>TypeScript</li><li>Policy engine</li><li>TOTP + passkeys</li><li>DLP</li><li>Audit log</li></ul>
+            <div class="panel__links">
+              <a class="btn" href="https://tessera-nishant.netlify.app/" target="_blank" rel="noopener">Open live app <span class="arrow" aria-hidden="true">↗</span></a>
+              <a class="btn btn--ghost" href="https://github.com/NishantSingh00001/Tessera" target="_blank" rel="noopener">View code <span class="arrow" aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="face face--2" style="--dot:#7ad866">
+            <span class="panel__tag"><i></i>Distributed systems</span>
+            <h3 class="panel__name"><span>Aqueduct</span></h3>
+            <p class="panel__meaning">“Roman engineering that carried flow at scale”</p>
+            <p class="panel__desc">A distributed-systems studio: compose an architecture and watch real primitives — rate limiter, LRU cache, consistent-hash ring, circuit breaker — shard, autoscale and recover under live traffic.</p>
+            <ul class="panel__stack"><li>TypeScript</li><li>Load balancing</li><li>Consistent hashing</li><li>Circuit breaker</li><li>WebGL</li></ul>
+            <div class="panel__links">
+              <a class="btn" href="https://aqueduct-nishant.netlify.app/" target="_blank" rel="noopener">Open live app <span class="arrow" aria-hidden="true">↗</span></a>
+              <a class="btn btn--ghost" href="https://github.com/NishantSingh00001/Aqueduct" target="_blank" rel="noopener">View code <span class="arrow" aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="face face--3" style="--dot:#fde725">
+            <span class="panel__tag"><i></i>AI agents</span>
+            <h3 class="panel__name"><span>Praxis</span></h3>
+            <p class="panel__meaning">“theory put into action”</p>
+            <p class="panel__desc">A workbench of three transparent AI agents — data analysis, career and research — that plan, call tools and show every step, built on Gemini with real logic underneath.</p>
+            <ul class="panel__stack"><li>TypeScript</li><li>AI agents</li><li>Tool use</li><li>RAG</li><li>Gemini API</li></ul>
+            <div class="panel__links">
+              <a class="btn" href="https://praxis-nishant.netlify.app/" target="_blank" rel="noopener">Open live app <span class="arrow" aria-hidden="true">↗</span></a>
+              <a class="btn btn--ghost" href="https://github.com/NishantSingh00001/Praxis" target="_blank" rel="noopener">View code <span class="arrow" aria-hidden="true">↗</span></a>
+            </div>
+          </article>
         </div>
       </div>
-    </div>
-
-    <div class="aura__stage">
-      <a class="aura__visual" href="https://aura-nishant.netlify.app/" target="_blank" rel="noopener" data-cursor="Open app" aria-label="Open the AURA live app">
-        <svg class="rings" viewBox="0 0 600 600" aria-hidden="true">
-          <defs>
-            <linearGradient id="rg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fde725"/><stop offset="1" stop-color="#b5de2b"/></linearGradient>
-            <linearGradient id="rg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8fe07a"/><stop offset="1" stop-color="#35b779"/></linearGradient>
-            <linearGradient id="rg3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2fb0a6"/><stop offset="1" stop-color="#4f7fd0"/></linearGradient>
-          </defs>
-          <g transform="rotate(-90 300 300)">
-            <circle class="ring-track" cx="300" cy="300" r="250" stroke="#fde725"/>
-            <circle class="ring-track" cx="300" cy="300" r="200" stroke="#5ec962"/>
-            <circle class="ring-track" cx="300" cy="300" r="150" stroke="#2fb0a6"/>
-            <circle class="ring" cx="300" cy="300" r="250" stroke="url(#rg1)" stroke-dasharray="1570.8" stroke-dashoffset="282.7"/>
-            <circle class="ring" cx="300" cy="300" r="200" stroke="url(#rg2)" stroke-dasharray="1256.6" stroke-dashoffset="326.7"/>
-            <circle class="ring" cx="300" cy="300" r="150" stroke="url(#rg3)" stroke-dasharray="942.5" stroke-dashoffset="320.4"/>
-          </g>
-        </svg>
-        <span class="readout" aria-hidden="true"><span class="readout__k" data-rk>Move</span><span class="readout__v" data-rv>482</span><span class="readout__u" data-ru>of 600 kcal</span></span>
-      </a>
-
-      <ol class="aura__steps">
-        <li class="step is-active"><p class="step__k"><i style="--c:#fde725"></i>Activity</p><h3>Close your rings.</h3><p>Move, exercise and stand rings drawn in pure SVG fill up as your day adds up. A live workout view times each session and estimates the calories you burn.</p></li>
-        <li class="step"><p class="step__k"><i style="--c:#7ad866"></i>Nutrition</p><h3>Eat and drink with intent.</h3><p>A daily calorie budget, a protein, carb and fat split, meal logging, and an eight-glass water tracker.</p></li>
-        <li class="step"><p class="step__k"><i style="--c:#2fb0a6"></i>Mind</p><h3>Look after your head too.</h3><p>Mood check-ins, prompts drawn from cognitive behavioural therapy, and a guided box-breathing exercise.</p></li>
-      </ol>
-    </div>
-
-    <div class="aura__foot" data-reveal>
-      <p><strong>No framework, no backend.</strong> Plain HTML, CSS and JavaScript, with one state class that saves workouts, meals and check-ins to localStorage. Built independently during the Impacteers Future Jobs Program.</p>
-      <ul class="chips" aria-label="Built with"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>SVG</li><li>localStorage</li><li>Netlify</li></ul>
+      <div class="cube-nav">
+        <button class="arrow-btn" id="featPrev" type="button" aria-label="Previous featured project">←</button>
+        <div class="dots" id="featDots" role="tablist" aria-label="Featured projects"></div>
+        <button class="arrow-btn" id="featNext" type="button" aria-label="Next featured project">→</button>
+      </div>
+      <p class="feat__hint" aria-hidden="true">click the arrows or a dot · or press ← →</p>
     </div>
   </div>
 </section>
@@ -646,7 +668,7 @@ a:hover .arrow,button:hover .arrow{transform:translate(2px,-2px)}
   <div class="work__pin">
     <div class="wrap work__head">
       <div><p class="label" data-reveal>Selected projects</p><h2 class="h1" data-split>More things I've <em>built.</em></h2></div>
-      <div class="work__count" aria-hidden="true"><span data-idx>01</span><span class="work__bar"><i></i></span><span>06</span></div>
+      <div class="work__count" aria-hidden="true"><span data-idx>01</span><span class="work__bar"><i></i></span><span>10</span></div>
     </div>
     <div class="work__track">
 
@@ -769,6 +791,109 @@ a:hover .arrow,button:hover .arrow{transform:translate(2px,-2px)}
           <p class="card__desc"><strong>Salarium</strong> estimates developer pay from 17,332 real salaries in 59 countries (Stack Overflow survey 2025). LightGBM gives the estimate with a typical error of ±21.6%, conformal quantile models give an 80% range that holds for 81% of people, and SHAP explains every number. It also checks job offers with Gemini.</p>
           <ul class="card__stack"><li>Python</li><li>LightGBM</li><li>scikit-learn</li><li>SHAP</li><li>TypeScript</li><li>Gemini API</li></ul>
           <div class="card__links"><a class="tlink" href="https://salarium-nishant.netlify.app/" target="_blank" rel="noopener">Open Salarium ↗</a><a class="tlink" href="https://github.com/NishantSingh00001/Salarium" target="_blank" rel="noopener">View code ↗</a></div>
+        </div>
+      </article>
+
+      <article class="card spot">
+        <div class="card__visual" aria-hidden="true">
+          <span class="viz-label">activity · nutrition · mind</span>
+          <svg viewBox="0 0 520 320" preserveAspectRatio="xMidYMid meet">
+            <g transform="translate(260 158) rotate(-90)">
+              <circle r="92" fill="none" stroke="#fde725" stroke-width="18" opacity=".14"/>
+              <circle r="68" fill="none" stroke="#7ad866" stroke-width="18" opacity=".14"/>
+              <circle r="44" fill="none" stroke="#2fb0a6" stroke-width="18" opacity=".14"/>
+              <circle r="92" fill="none" stroke="#fde725" stroke-width="18" stroke-linecap="round" stroke-dasharray="578" stroke-dashoffset="150"/>
+              <circle r="68" fill="none" stroke="#7ad866" stroke-width="18" stroke-linecap="round" stroke-dasharray="427" stroke-dashoffset="138"/>
+              <circle r="44" fill="none" stroke="#2fb0a6" stroke-width="18" stroke-linecap="round" stroke-dasharray="276" stroke-dashoffset="104"/>
+            </g>
+            <text class="svgtxt" x="260" y="156" text-anchor="middle" style="font-size:22px;fill:#f5f5f7">482</text>
+            <text class="svgtxt svgtxt--dim" x="260" y="176" text-anchor="middle">of 600 kcal</text>
+          </svg>
+        </div>
+        <div class="card__body">
+          <p class="card__meta"><span>Full stack</span><span>Solo</span></p>
+          <h3 class="card__title">AURA</h3>
+          <p class="card__desc">An Apple Fitness+ inspired wellness app in plain HTML, CSS and JavaScript: activity rings and a live workout timer, a calorie, macro and water tracker, and mental-care tools — mood check-ins, CBT prompts and box breathing. One state class saves everything to localStorage, no backend.</p>
+          <ul class="card__stack"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>SVG</li><li>localStorage</li></ul>
+          <div class="card__links"><a class="tlink" href="https://aura-nishant.netlify.app/" target="_blank" rel="noopener">Open AURA ↗</a><a class="tlink" href="https://github.com/NishantSingh00001/aura-health-fitness" target="_blank" rel="noopener">View code ↗</a></div>
+        </div>
+      </article>
+
+      <article class="card spot">
+        <div class="card__visual" aria-hidden="true">
+          <span class="viz-label">terminal · 3D code map</span>
+          <svg viewBox="0 0 520 320" preserveAspectRatio="xMidYMid meet">
+            <rect class="svgnode" x="66" y="80" width="258" height="160" rx="14"/>
+            <circle cx="88" cy="102" r="4" fill="#ff5f57"/><circle cx="104" cy="102" r="4" fill="#febc2e"/><circle cx="120" cy="102" r="4" fill="#28c840"/>
+            <text class="svgtxt" x="86" y="136" style="fill:#7ad866">$ archaeo map ./src</text>
+            <text class="svgtxt svgtxt--dim" x="86" y="158">parsing 142 modules</text>
+            <text class="svgtxt svgtxt--dim" x="86" y="180">tracing call graph</text>
+            <text class="svgtxt" x="86" y="206" style="fill:#f5f5f7">▸ 3D map ready</text>
+            <g stroke="rgba(255,255,255,.22)" stroke-width="1.5">
+              <line x1="392" y1="118" x2="432" y2="158"/><line x1="432" y1="158" x2="400" y2="206"/><line x1="432" y1="158" x2="472" y2="200"/>
+            </g>
+            <circle cx="392" cy="118" r="10" fill="#1b1b21" stroke="#7ad866" stroke-width="1.5"/>
+            <circle cx="432" cy="158" r="12" fill="#1b1b21" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
+            <circle cx="400" cy="206" r="9" fill="#1b1b21" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
+            <circle cx="472" cy="200" r="9" fill="#1b1b21" stroke="#7ad866" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="card__body">
+          <p class="card__meta"><span>Developer tools</span><span>Solo</span></p>
+          <h3 class="card__title">CodeArch</h3>
+          <p class="card__desc">Explore a codebase like an archaeologist. A terminal-style IDE and a gamified 3D code explorer map a project's modules and call graph, and a Gemini layer explains what each part does and how it connects.</p>
+          <ul class="card__stack"><li>JavaScript</li><li>three.js</li><li>WebGL</li><li>Gemini API</li><li>Code visualization</li></ul>
+          <div class="card__links"><a class="tlink" href="https://github.com/NishantSingh00001/CodeArch" target="_blank" rel="noopener">View code ↗</a></div>
+        </div>
+      </article>
+
+      <article class="card spot">
+        <div class="card__visual" aria-hidden="true">
+          <span class="viz-label">your books → answers</span>
+          <svg viewBox="0 0 520 320" preserveAspectRatio="xMidYMid meet">
+            <rect class="svgnode" x="150" y="68" width="220" height="184" rx="16"/>
+            <circle cx="184" cy="110" r="14" fill="#1b1b21" stroke="#9577ee" stroke-width="1.5"/>
+            <text class="svgtxt" x="184" y="115" text-anchor="middle" style="fill:#9577ee">Q</text>
+            <rect x="210" y="101" width="132" height="10" rx="5" fill="rgba(255,255,255,.16)"/>
+            <rect x="210" y="119" width="96" height="10" rx="5" fill="rgba(255,255,255,.1)"/>
+            <circle cx="184" cy="170" r="14" fill="#1b1b21" stroke="#7ad866" stroke-width="1.5"/>
+            <text class="svgtxt" x="184" y="175" text-anchor="middle" style="fill:#7ad866">A</text>
+            <rect x="210" y="161" width="122" height="10" rx="5" fill="rgba(255,255,255,.16)"/>
+            <rect x="210" y="179" width="140" height="10" rx="5" fill="rgba(255,255,255,.1)"/>
+            <rect x="210" y="197" width="84" height="10" rx="5" fill="rgba(255,255,255,.08)"/>
+            <rect x="170" y="224" width="180" height="6" rx="3" fill="rgba(255,255,255,.1)"/>
+            <rect x="170" y="224" width="116" height="6" rx="3" fill="#9577ee"/>
+          </svg>
+        </div>
+        <div class="card__body">
+          <p class="card__meta"><span>Generative AI</span><span>Solo</span></p>
+          <h3 class="card__title">Tutor-Mind</h3>
+          <p class="card__desc">An AI study tutor that teaches from your own textbooks and past papers across subjects. It retrieves from the material you upload rather than answering generically, and runs on Gemini's free tier.</p>
+          <ul class="card__stack"><li>JavaScript</li><li>RAG</li><li>Retrieval</li><li>Gemini API</li><li>EdTech</li></ul>
+          <div class="card__links"><a class="tlink" href="https://github.com/NishantSingh00001/Tutor-Mind" target="_blank" rel="noopener">View code ↗</a></div>
+        </div>
+      </article>
+
+      <article class="card spot">
+        <div class="card__visual" aria-hidden="true">
+          <span class="viz-label">scan · interactions · dosage</span>
+          <svg viewBox="0 0 520 320" preserveAspectRatio="xMidYMid meet">
+            <g transform="rotate(-28 258 162)">
+              <rect x="198" y="140" width="120" height="44" rx="22" fill="#1b1b21" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
+              <path d="M258 141 h38 a21 21 0 0 1 21 21 a21 21 0 0 1 -21 21 h-38 z" fill="#2fb0a6" opacity=".5"/>
+              <line x1="258" y1="140" x2="258" y2="184" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
+            </g>
+            <line x1="150" y1="214" x2="368" y2="214" stroke="#7ad866" stroke-width="2" stroke-dasharray="6 7" opacity=".65"/>
+            <path d="M410 92 l27 10 v23 c0 19 -15 29 -27 35 c-12 -6 -27 -16 -27 -35 v-23 z" fill="#1b1b21" stroke="#2fb0a6" stroke-width="1.5"/>
+            <path d="M397 132 l9 9 l18 -20" fill="none" stroke="#7ad866" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="card__body">
+          <p class="card__meta"><span>Multimodal AI</span><span>Solo</span></p>
+          <h3 class="card__title">MediGuard</h3>
+          <p class="card__desc">Point a camera at a medicine or prescription and check interactions, dosage and safety. A multimodal medication-safety assistant that reads labels with OCR and reasons over them with Gemini.</p>
+          <ul class="card__stack"><li>JavaScript</li><li>OCR</li><li>Multimodal</li><li>Gemini API</li><li>Healthcare</li></ul>
+          <div class="card__links"><a class="tlink" href="https://github.com/NishantSingh00001/MediGuard" target="_blank" rel="noopener">View code ↗</a></div>
         </div>
       </article>
 
@@ -1011,7 +1136,15 @@ var NOTES = {
   'cross-bridge': 'Telegram ⇄ WhatsApp bridge: signed webhooks, delivery receipts, media, Gemini translation and a live simulator.',
   'salarium': 'Developer salary estimates from 17,332 real salaries: LightGBM, a calibrated 80% range and SHAP explanations.',
   'aura-health-fitness': 'Apple Fitness+ inspired wellness app: activity rings, workouts, nutrition and mental-care tools, all in plain JavaScript.',
-  'tensorflow-digit-classifier': 'The original Colab notebook: a TensorFlow and Keras network that classifies MNIST digits at 97.7% test accuracy.'
+  'tensorflow-digit-classifier': 'The original Colab notebook: a TensorFlow and Keras network that classifies MNIST digits at 97.7% test accuracy.',
+  'tideline': 'Flink-style stream processing on Wikipedia’s live edit stream: event-time windows, watermarks, a Flink SQL console and exactly-once recovery.',
+  'tessera': 'A working zero-trust access gateway: identity, device, destination and risk checks on every request, with DLP and a tamper-evident audit log.',
+  'aqueduct': 'A distributed-systems studio: rate limiter, LRU cache, consistent-hash ring and circuit breaker shard, autoscale and recover under live traffic.',
+  'praxis': 'Three transparent AI agents (data analysis, career, research) that plan, call tools and show every step, built on Gemini.',
+  'codearch': 'Explore a codebase like an archaeologist: a terminal-style IDE and a gamified 3D code explorer, powered by Gemini.',
+  'tutor-mind': 'An AI study tutor that teaches from your own textbooks and past papers, retrieving over your material. Free-tier friendly, on Gemini.',
+  'mediguard': 'Scan medicines and prescriptions to check interactions, dosage and safety: a multimodal medication-safety assistant with OCR on Gemini.',
+  'verifyai': 'Fact-check claims, images and documents: multimodal verification powered by Gemini with web-search grounding.'
 };
 var LIVE = {
   'aura-health-fitness': 'https://aura-nishant.netlify.app/',
@@ -1020,10 +1153,18 @@ var LIVE = {
   'parley': 'https://parley-nishant.netlify.app/',
   'quickresume': 'https://quickresume-nishant.netlify.app/',
   'cross-bridge': 'https://crossbridge-nishant.netlify.app/',
-  'salarium': 'https://salarium-nishant.netlify.app/'
+  'salarium': 'https://salarium-nishant.netlify.app/',
+  'tideline': 'https://tideline-nishant.netlify.app/',
+  'tessera': 'https://tessera-nishant.netlify.app/',
+  'aqueduct': 'https://aqueduct-nishant.netlify.app/',
+  'praxis': 'https://praxis-nishant.netlify.app/'
 };
 var LANG = { 'HTML':'#e34c26', 'JavaScript':'#f1e05a', 'Python':'#3572A5', 'Jupyter Notebook':'#DA5B0B', 'TypeScript':'#3178c6', 'Java':'#b07219', 'CSS':'#663399', 'C++':'#f34b7d' };
 var STATIC_REPOS = [
+  { name: 'Tideline', lang: 'TypeScript', updated: '2026-10-22T07:00:00Z', url: 'https://github.com/NishantSingh00001/Tideline' },
+  { name: 'Tessera', lang: 'TypeScript', updated: '2026-10-22T06:55:00Z', url: 'https://github.com/NishantSingh00001/Tessera' },
+  { name: 'Aqueduct', lang: 'TypeScript', updated: '2026-10-22T06:50:00Z', url: 'https://github.com/NishantSingh00001/Aqueduct' },
+  { name: 'Praxis', lang: 'TypeScript', updated: '2026-10-22T06:45:00Z', url: 'https://github.com/NishantSingh00001/Praxis' },
   { name: 'ilaaj-saathi', lang: 'JavaScript', updated: '2026-09-27T10:30:03Z', url: 'https://github.com/NishantSingh00001/ilaaj-saathi', desc: 'Hindi, English and Bengali helper that checks in 2 minutes if a family gets free hospital care under Ayushman Bharat PM-JAY. Code for a Billion 2026.' },
   { name: 'Salarium', lang: 'TypeScript', updated: '2026-09-25T18:20:50Z', url: 'https://github.com/NishantSingh00001/Salarium' },
   { name: 'Cross-Bridge', lang: 'TypeScript', updated: '2026-09-25T17:30:53Z', url: 'https://github.com/NishantSingh00001/Cross-Bridge' },
@@ -1356,29 +1497,8 @@ $$('[data-count]').forEach(function(el){
 G.to('.hero__bg', { yPercent: 18, scale: 1.06, opacity: .25, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
 G.to('.hero__inner', { yPercent: -10, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
 
-/* ---------- AURA: rings fill as each step scrolls in ---------- */
-var rings = $$('.aura .ring'), steps = $$('.aura .step');
-var TARGET = [.82, .74, .66], CIRC = rings.map(function(r){ return 2 * Math.PI * r.r.baseVal.value; });
-var READ = [ { k: 'Move', v: '482', u: 'of 600 kcal' }, { k: 'Hydration', v: '6', u: 'of 8 glasses' }, { k: 'Mind', v: '4:00', u: 'box breathing' } ];
-var rk = $('[data-rk]'), rv = $('[data-rv]'), ru = $('[data-ru]'), cur = 0;
-function setStep(i){
-  if (i === cur) return; cur = i;
-  steps.forEach(function(s, j){ s.classList.toggle('is-active', j === i); });
-  G.to([rk, rv, ru], { opacity: 0, y: -8, duration: .2, stagger: .03, onComplete: function(){ rk.textContent = READ[i].k; rv.textContent = READ[i].v; ru.textContent = READ[i].u; G.fromTo([rk, rv, ru], { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .45, stagger: .04, ease: 'expo.out' }); } });
-}
+/* ---------- matchMedia (shared by the gallery below) ---------- */
 var mm = G.matchMedia();
-mm.add('(min-width: 901px)', function(){
-  rings.forEach(function(r, i){
-    G.fromTo(r, { strokeDashoffset: CIRC[i] }, { strokeDashoffset: CIRC[i] * (1 - TARGET[i]), ease: 'none', scrollTrigger: { trigger: steps[i], start: i === 0 ? 'top 95%' : 'top 80%', end: 'center 50%', scrub: .6 } });
-    ST.create({ trigger: steps[i], start: 'top 55%', end: 'bottom 55%', onToggle: function(self){ if (self.isActive) setStep(i); } });
-  });
-  G.fromTo('.rings', { rotate: -25 }, { rotate: 0, ease: 'none', scrollTrigger: { trigger: '.aura__stage', start: 'top 80%', end: 'bottom 40%', scrub: true } });
-});
-mm.add('(max-width: 900px)', function(){
-  rings.forEach(function(r, i){
-    G.fromTo(r, { strokeDashoffset: CIRC[i] }, { strokeDashoffset: CIRC[i] * (1 - TARGET[i]), duration: 1.8, delay: i * .15, ease: 'expo.out', scrollTrigger: { trigger: '.aura__visual', start: 'top 80%' } });
-  });
-});
 
 /* ---------- projects: horizontal gallery on wide screens ---------- */
 var track = $('.work__track'), pinEl = $('.work__pin'), idxEl = $('[data-idx]'), barEl = $('.work__bar i');
@@ -1441,6 +1561,61 @@ if (fine) {
 /* ---------- refresh after fonts settle ---------- */
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ ST.refresh(); });
 window.addEventListener('load', function(){ ST.refresh(); });
+})();
+</script>
+
+<!-- featured cube controller (independent of the animation libraries) -->
+<script>
+(function(){
+  "use strict";
+  var cube = document.getElementById('featCube');
+  if (!cube) return;
+  var faces = Array.prototype.slice.call(cube.querySelectorAll('.face'));
+  var N = faces.length; if (!N) return;
+  var reduce = false;
+  try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch(e){}
+
+  var names = faces.map(function(f){ var el = f.querySelector('.panel__name span'); return el ? el.textContent.trim() : ('Project ' + 1); });
+  var dotsWrap = document.getElementById('featDots');
+  var dots = [];
+  var idx = 0, turns = 0;
+
+  for (var i = 0; i < N; i++) (function(i){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'dot'; b.setAttribute('role', 'tab');
+    b.setAttribute('aria-label', names[i]);
+    b.addEventListener('click', function(){ go(i); });
+    dotsWrap.appendChild(b); dots.push(b);
+  })(i);
+
+  function paint(){
+    cube.style.transform = 'rotateX(-6deg) rotateY(' + (-turns * 90) + 'deg)';
+    for (var i = 0; i < N; i++){
+      dots[i].setAttribute('aria-current', i === idx ? 'true' : 'false');
+      faces[i].setAttribute('aria-hidden', i === idx ? 'false' : 'true');
+    }
+  }
+  function render(){
+    if (reduce){ cube.classList.add('no-anim'); paint(); requestAnimationFrame(function(){ cube.classList.remove('no-anim'); }); }
+    else paint();
+  }
+  function go(target){
+    var diff = (target - idx + N) % N; if (diff > N / 2) diff -= N;
+    turns += diff; idx = target; render();
+  }
+  function step(dir){ turns += dir; idx = (idx + dir + N) % N; render(); }
+
+  document.getElementById('featNext').addEventListener('click', function(){ step(1); });
+  document.getElementById('featPrev').addEventListener('click', function(){ step(-1); });
+  document.addEventListener('keydown', function(e){
+    if (e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+    var feat = document.getElementById('featured'); if (!feat) return;
+    var r = feat.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > window.innerHeight) return; // only when the section is on screen
+    if (e.key === 'ArrowRight') step(1);
+    else if (e.key === 'ArrowLeft') step(-1);
+  });
+  paint();
 })();
 </script>
 </body>
